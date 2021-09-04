@@ -41,9 +41,9 @@ now_time = datetime.now().strftime("%X")
 for exercise in result["exercises"]:
     sheet_inputs = {
         "list": {
-            # "date": today_date,
-            # "time": now_time,
-            # "exercise": exercise["name"].title(),
+            "date": today_date,
+            "time": now_time,
+            "exercise": exercise["name"].title(),
             "duration": exercise["duration_min"],
             "calories": exercise["nf_calories"]
         }
@@ -51,30 +51,4 @@ for exercise in result["exercises"]:
 
     # No Auth
     sheet_response = requests.post(url=sheet_endpoint, json=sheet_inputs)
-#
-#     # headers = {
-#     #     "Authorization": f"Basic {os.getenv('AUTHORIZATION')}",
-#     #     "Content-Type": "application/json",
-#     # }
-#     # # Basic Auth
-#     # sheet_response = requests.post(
-#     #     sheet_endpoint,
-#     #     json=sheet_inputs,
-#     #     auth=(
-#     #         os.getenv("USERNAME"),
-#     #         os.getenv("PASSWORD"),
-#     #     ),
-#     #     headers=headers,
-#     # )
-#     #
-#     # # Bearer Token
-#     # bearer_headers = {
-#     #     "Authorization": f"Bearer {os.environ['TOKEN']}"
-#     # }
-#     # sheet_response = requests.post(
-#     #     sheet_endpoint,
-#     #     json=sheet_inputs,
-#     #     headers=bearer_headers
-#     # )
-#
     print(sheet_response.text)
